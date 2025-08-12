@@ -11,8 +11,10 @@ app.use(cookieParser());
 
 //routes
 const authRoute=require('./routes/authRoutes.js');
-app.use('/api',authRoute);
+app.use('/api/auth',authRoute);
 
+const driverRoutes=require('./routes/driversRoutes.js');
+app.use('/api/drivers',driverRoutes);
 
 //connection to the database
 require('dotenv').config();
