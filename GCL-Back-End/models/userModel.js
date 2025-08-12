@@ -10,6 +10,8 @@ const UserSchema=mongoose.Schema({
         type:String,
         required:true,
     }
+},{
+    timestamps:true
 });
 const User=mongoose.model('user',UserSchema);
 module.exports=User;

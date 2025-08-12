@@ -31,8 +31,6 @@ const createOrder=async(req,res)=>{
         
         const lastOrder=await Order.findOne().sort({order_id:-1});
         const newOrder_id=lastOrder?lastOrder.order_id+1:1;
-        console.log(lastOrder);
-        console.log(newOrder_id);
         const newOrder=await Order.create({
             order_id:newOrder_id,
             value_rs,
