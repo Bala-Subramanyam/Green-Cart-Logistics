@@ -16,6 +16,9 @@ app.use('/api/auth',authRoute);
 const driverRoutes=require('./routes/driversRoutes.js');
 app.use('/api/drivers',driverRoutes);
 
+const ordersRoutes=require('./routes/ordersRoutes.js');
+app.use('/api/orders',ordersRoutes);
+
 //connection to the database
 require('dotenv').config();
 mongoose.connect(process.env.MONGODB_URI).then(()=>{
