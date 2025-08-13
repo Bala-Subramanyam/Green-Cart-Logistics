@@ -22,6 +22,9 @@ app.use('/api/orders',ordersRoutes);
 const routesRoutes=require('./routes/routesRoutes.js');
 app.use('/api/routes',routesRoutes);
 
+const simulationRoutes=require('./routes/simulationRoutes.js');
+app.use('/api/simulation',simulationRoutes);
+
 //connection to the database
 require('dotenv').config();
 mongoose.connect(process.env.MONGODB_URI).then(()=>{
