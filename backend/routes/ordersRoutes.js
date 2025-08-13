@@ -4,10 +4,10 @@ const {getOrders,getOrder, createOrder, updateOrder, deleteOrder}=require('../co
 const authenticate=require('../middleware/jwt_authentication.js');
 
 
-route.get('/',getOrders);
-route.get('/:_id',getOrder);
-route.post('/create',createOrder);
-route.put('/update/:_id',updateOrder);
-route.delete('/delete/:_id',deleteOrder);
+route.get('/',authenticate,getOrders);
+route.get('/:_id',authenticate,getOrder);
+route.post('/create',authenticate,createOrder);
+route.put('/update/:_id',authenticate,updateOrder);
+route.delete('/delete/:_id',authenticate,deleteOrder);
 
 module.exports=route;

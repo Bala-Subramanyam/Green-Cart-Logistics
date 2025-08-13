@@ -43,10 +43,9 @@ const loginAccount=async(req,res)=>{
             {expiresIn:'1h'}
         )
         res.cookie('access_token',access_token,{
-            httpOnly:true,
-            secure:process.env.NODE_ENV==="production",
-            sameSite:'strict',
-            maxAge:60*60*1000
+            httpOnly: true,
+            secure: false,           
+            sameSite: "lax"          
         })
 
         res.status(202).json({message:"logged in successfully"});

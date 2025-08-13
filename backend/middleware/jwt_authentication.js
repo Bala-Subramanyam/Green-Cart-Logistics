@@ -14,3 +14,4 @@ const authenticate=(req,res,next)=>{
         return res.status(407).json({message:"error at the jwt verification"});
     }
 }
+module.exports=authenticate;

@@ -2,12 +2,17 @@ const express=require('express');
 const app=express();
 const mongoose=require('mongoose');
 const cookieParser=require('cookie-parser');
-
+const cors=require('cors'); 
 
 //middleware
 app.use(express.json());
 app.use(cookieParser());
 
+//to listen from the front-end 
+app.use(cors({
+    origin:"http://localhost:5173",
+    credentials:true
+}));
 
 //routes
 const authRoute=require('./routes/authRoutes.js');
