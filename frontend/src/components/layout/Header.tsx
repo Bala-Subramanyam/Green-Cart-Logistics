@@ -17,12 +17,7 @@ const Header=()=>{
     return(
         <header className="flex justify-between items-center p-4 border-b bg-background">
       <h1 className="text-xl font-bold tracking-tight">Logistics Dashboard</h1>
-      <div className="flex items-center gap-4">
-        <span className="text-sm text-muted-foreground">Hello, {username}</span>
-        <Button variant="destructive" size="sm" onClick={handleLogout}>
-          <LogOut size={16} className="mr-2" /> Logout
-        </Button>
-      </div>
+      
     </header>
     )
 }
