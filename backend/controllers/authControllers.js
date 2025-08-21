@@ -54,8 +54,17 @@ const loginAccount=async(req,res)=>{
         res.status(403).json({message:"couldn't login due to server side error"})
     }
 }
+const logoutAccount=async (req,res)=>{
+    res.clearCookie('access_token',{
+        httpOnly:true,
+        secure:process.env.NODE_ENV==="production",
+        sameSite:"strict"
+    });
+    res.status(200).json({message:"Logged out successfully "});
+}
 
 module.exports={
     loginAccount,
-    registerAccount
+    registerAccount,
+    logoutAccount
 }
