@@ -17,7 +17,7 @@ import {
   TableBody,
   TableCell,
 } from "@/components/ui/table";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Alert, AlertTitle } from "@/components/ui/alert";
 import { AlertTriangle } from "lucide-react";
 
 const orderSchema = z.object({
