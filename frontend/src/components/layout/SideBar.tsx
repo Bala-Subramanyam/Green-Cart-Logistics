@@ -64,10 +64,14 @@ const Sidebar = () => {
   const logout = useAuthStore((state) => state.logout);
   const username = useAuthStore((state) => state.username);
   const navigate = useNavigate();
-  const handleLogout = () => {
-    authApi.logout();
-    logout();
-    navigate("/login");
+  const handleLogout=async()=>{
+    try{
+      await authApi.logout();
+      logout();
+      navigate('/login');
+    }catch(err){
+      console.log("Logout Failed",err);
+    }
   };
 
   return (
@@ -110,7 +114,7 @@ const Sidebar = () => {
         <div className="flex flex-col gap-y-4 items-center">
           {/* Center the username but don't shrink the button */}
           <div className="flex flex-col items-center w-full">
-            <span className="text-xl">{`${username}`}</span>
+            <span className="text-xl">{`${username}`||"Manager"}</span>
           </div>
           <div className="w-full flex justify-center">
             <Button

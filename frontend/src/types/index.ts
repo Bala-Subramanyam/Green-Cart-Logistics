@@ -1,12 +1,14 @@
 export interface SimulationResult {
-  simulation_id: string;
-  total_profit: string;
-  efficiency_score: string;
+  total_profit: number;
+  efficiency_score: number;
   on_time_deliveries: number;
   late_deliveries: number;
+  number_of_drivers: number;
+  max_hours_per_driver: number;
+  route_start_time: string;
   fuel_cost_breakdown: {
     driver_name: string;
-    fuel_cost: string;
+    fuel_cost: number;
   }[];
   details: {
     driver_name: string;
