@@ -13,18 +13,18 @@ const getOrders=async(req,res)=>{
         res.status(500).json({message:"fetching orders not successfull due to server side error"});
     }
 }
-const getOrder=async(req,res)=>{
-    try{
-        const {_id}=req.params;
-        const myorder=await Order.findOne({_id});
-        if(!myorder){
-            res.status(404).json({message:"there is no order with this Id"});
-        }
-        res.status(200).json(myorder);
-    }catch(err){
-        res.status(500).json({message:"server side error at getOrder"})
+const getOrderByOrderId = async (req, res) => {
+  try {
+    const { order_id } = req.params;
+    const myorder = await Order.findOne({ order_id: Number(order_id) });
+    if (!myorder) {
+      return res.status(404).json({ message: "there is no order with this order_id" });
     }
-}
+    res.status(200).json(myorder);
+  } catch (err) {
+    res.status(500).json({ message: "server side error at getOrderByOrderId" });
+  }
+};
 const createOrder=async(req,res)=>{
     try{
         const {value_rs,route_id,delivery_time}=req.body;
@@ -43,54 +43,56 @@ const createOrder=async(req,res)=>{
         res.status(500).json({message:"server side error at createOrder"});
     }
 }
-const updateOrder=async(req,res)=>{
-    try{
-        const {_id}=req.params;
-        const updates={...req.body};
-        const {__v}=req.body;
-        if (__v === undefined || typeof __v !== 'number') {
-            return res.status(400).json({
-                message: "Version (__v) is missing or invalid. Please include the current version number."
-            });
-        }
-        delete updates.__v;
+const updateOrder = async (req, res) => {
+  try {
+    const { order_id } = req.params;
+    const updates = { ...req.body };
+    const { __v } = req.body;
 
-        const order=await Order.findOne({_id});
-        if(!order){
-            return res.status(404).json({ message: "Order not found" });
-        }
-
-        const updatedOrder=await Order.findOneAndUpdate(
-            {_id,__v},
-            {$set:updates , $inc:{__v:1}},
-            {new:true,runValidators:true}
-        )
-
-        if(!updatedOrder){
-            res.status(409).json({message:"this order was update by someone else after you have fetched data so please retry after fetching again"});
-        }
-
-        res.status(200).json({message:"updated successfully" , order:updatedOrder});
-    }catch(err){
-        res.status(500).json({message:"error at server side"});
+    if (__v === undefined || typeof __v !== 'number') {
+      return res.status(400).json({
+        message: "Version (__v) is missing or invalid. Please include the current version number."
+      });
     }
-}
+    delete updates.__v;
 
-const deleteOrder=async(req,res)=>{
-    try{
-        const {_id}=req.params;
-        const delorder=await Order.findOneAndDelete({_id});
-        if(!delorder){
-            res.status(409).json({message:`order with name is not there `})
-        }
-        res.status(200).json({message:"deleted successfully"});
-    }catch(err){
-        res.status(500).json({message:"server side error in the backend"});
+    const order = await Order.findOne({ order_id: Number(order_id) });
+    if (!order) {
+      return res.status(404).json({ message: "Order not found" });
     }
-}
+
+    const updatedOrder = await Order.findOneAndUpdate(
+      { order_id: Number(order_id), __v },
+      { $set: updates, $inc: { __v: 1 } },
+      { new: true, runValidators: true }
+    );
+
+    if (!updatedOrder) {
+      return res.status(409).json({ message: "Concurrent update conflict. Please retry." });
+    }
+
+    res.status(200).json({ message: "updated successfully", order: updatedOrder });
+  } catch (err) {
+    res.status(500).json({ message: "error at server side" });
+  }
+};
+
+const deleteOrder = async (req, res) => {
+  try {
+    const { order_id } = req.params;
+    const delorder = await Order.findOneAndDelete({ order_id: Number(order_id) });
+    if (!delorder) {
+      return res.status(404).json({ message: `order with id ${order_id} is not there` });
+    }
+    res.status(200).json({ message: "deleted successfully" });
+  } catch (err) {
+    res.status(500).json({ message: "server side error in the backend" });
+  }
+};
+
 module.exports={
     getOrders,
-    getOrder,
+    getOrderByOrderId,
     createOrder,
     updateOrder,
     deleteOrder
