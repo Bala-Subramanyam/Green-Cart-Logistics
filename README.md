@@ -252,49 +252,27 @@ npm run lint       # Run ESLint
 - **Pages**: Full page components with data fetching
 - **API Layer**: Centralized API calls with error handling
 
-## 🚀 Deployment
+ Deployment
 
-### Backend Deployment
-1. Set production environment variables
-2. Build and deploy to your preferred platform (Heroku, DigitalOcean, etc.)
-3. Ensure MongoDB connection is properly configured
+can be deployed but since it is a internal feature it is better to integrate into existing one 
 
-### Frontend Deployment
-1. Update API base URL for production
-2. Build the application: `npm run build`
-3. Deploy the `dist` folder to static hosting (Vercel, Netlify, etc.)
 
-## 👨‍💻 Author
+Full-Stack Developer passionate to build new things 
 
-**Developed by [Your Name]**  
-Full-Stack Developer passionate about building efficient logistics solutions
-
-- 🚀 Specialized in React, Node.js, and MongoDB
-- 💡 Focused on creating scalable web applications
-- 🎯 Experienced in logistics optimization algorithms
+-  Specialized in React, Node.js, and MongoDB
+-  Focused on creating scalable web applications
+-  Experienced in logistics optimization algorithms
 
 Connect with me:
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/yourprofile)
-- Email: your.email@example.com
+- GitHub: [@yourusername](https://github.com/Bala-Subramanyam)
+- LinkedIn: [Your LinkedIn](https://www.linkedin.com/in/subramanyam-eb3eil3)
+- Email: gvbalu555@gmail.com
 
-## 🤝 Contributing
-
-This is a personal project, but contributions are welcome! If you'd like to contribute:
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/amazing-feature`
-3. Commit your changes: `git commit -m 'Add amazing feature'`
-4. Push to the branch: `git push origin feature/amazing-feature`
-5. Open a Pull Request
-
-Please ensure your code follows the existing patterns and includes appropriate tests.
-
-## 📄 License
+License
 
 This project is licensed under the ISC License. Feel free to use it for learning purposes.
 
-## 🐛 Known Issues & Future Enhancements
+Known Issues & Future Enhancements
 
 Current limitations I'm working on:
 - Simulation results storage could benefit from pagination for larger datasets
@@ -302,14 +280,14 @@ Current limitations I'm working on:
 - Planning to implement WebSocket for real-time updates
 - Considering adding email notifications for delivery updates
 
-## 📞 Support
+Support
 
 If you encounter any issues or have questions:
 1. Check the existing issues in the repository
 2. Create a new issue with detailed description
 3. Feel free to reach out to me directly
 
-## 🎯 Project Goals
+Project Goals
 
 I built this system to demonstrate:
 - Full-stack development skills
@@ -319,5 +297,5 @@ I built this system to demonstrate:
 
 ---
 
-**Crafted with dedication and attention to detail by [Your Name]**  
-*Building the future of logistics management, one line of code at a time* 🚛
+**Crafted with dedication and attention to detail by Bala Subramanyam**  
+
